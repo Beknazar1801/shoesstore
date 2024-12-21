@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/shoe_detail.css' %}"> <!-- Подключаем файл стилей -->
+
+    <div class="shoe-detail clearfix">
+        <h2>{{ shoe.name }}</h2>
+        <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}">
+        <p><strong>Описание:</strong> {{ shoe.description }}</p>
+        <p><strong>Цена:</strong> {{ shoe.price }}₽</p>
+        <p><strong>Цвет:</strong> {{ shoe.color }}</p>
+        <p><strong>Размеры:</strong> 
+            {% for availability in shoe.shoesizeavailability_set.all %}
+                <span>{{ availability.size.size }} (доступно: {{ availability.quantity }} шт.)</span><br>
+            {% endfor %}
+        </p>
+        <p><strong>Категория:</strong> {{ shoe.category }}</p>
+        <p><strong>Бренд:</strong> {{ shoe.brend }}</p>
+        
+        <!-- Вывод сообщения об успешном заказе -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        
+        <!-- Форма заказа -->
+        <form method="post" action="{% url 'create_order' shoe.id %}">
+            {% csrf_token %}
+            
+            <label for="size">Размер:</label>
+            <select id="size" name="size" required>
+                {% for availability in shoe.shoesizeavailability_set.all %}
+                    <option value="{{ availability.size.id }}">
+                        {{ availability.size.size }} (доступно: {{ availability.quantity }} шт.)
+                    </option>
+                {% endfor %}
+            </select>
+        
+            <label for="gender">Пол:</label>
+            <select id="gender" name="gender" required>
+                {% for gender in genders %}
+                    <option value="{{ gender.id }}">{{ gender.get_name_display }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="quantity">Количество:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" required>
+        
+            <button type="submit">Заказать</button>
+        </form>
+        
+        <a href="{% url 'home' %}">Назад к списку</a>
+    </div>
+{% endblock %}

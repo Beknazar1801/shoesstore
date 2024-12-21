@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  
+<div class="navbar-nav">
+    <a class="nav-item nav-link" href="{% url 'home' %}">Пулло</a>
+    <a class="nav-item nav-link" href="{% url 'shoes' %}">Кроссовки</a>
+    <a class="nav-item nav-link" href="#">пока ничегонет</a>
+    <a class="nav-item nav-link" href="#">пока ничегонет</a>
+    <a class="nav-item nav-link" href="#">пока ничегонет</a>
+    <a class="nav-item nav-link last" href="#"><img src="{% static 'images/airmax123.jpeg' %}" alt="airmax123"></a>
+    <a class="nav-item nav-link last" href="#"><img src="{% static 'images/airmax123.jpeg' %}" alt="airmax123"></a>
+</div>
+
+<div class="login-container">
+    <form method="post">
+        <h2>Вход в систему</h2>     
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">Имя пользователя:</label>
+            <input type="text" name="username" id="id_username" required>
+        </div>
+        <div class="form-group">
+            <label for="id_password">Пароль:</label>
+            <input type="password" name="password" id="id_password" required>
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+    <p><a href="{% url 'register' %}" class="register-link">Нет аккаунта? Зарегистрируйтесь</a></p>
+</div>
+
+
+
+{% endblock %}

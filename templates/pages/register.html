@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="navbar-nav">
+    <a class="nav-item nav-link" href="{% url 'home' %}">Пулло</a>
+    <a class="nav-item nav-link" href="{% url 'shoes' %}">Кроссовки</a>
+    <a class="nav-item nav-link" href="#">пока ничегонет</a>
+    <a class="nav-item nav-link" href="#">пока ничегонет</a>
+    <a class="nav-item nav-link" href="#">пока ничегонет</a>
+    <a class="nav-item nav-link last" href="#"><img src="{% static 'images/airmax123.jpeg' %}" alt="airmax123"></a>
+    <a class="nav-item nav-link last" href="#"><img src="{% static 'images/airmax123.jpeg' %}" alt="airmax123"></a>
+</div>
+
+<div class="form-container">
+  <form method="POST" class="form">
+    <h2>Регистрация</h2>
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Выводим форму в виде параграфов -->
+    <button type="submit">Зарегистрироваться</button>
+  </form>
+  <p><a href="{% url 'login' %}" class="login-link">Уже есть аккаунт? Войдите</a></p>
+</div>
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+{% endblock %}

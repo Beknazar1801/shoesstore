@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+/* Стили для меню авторизации */
+.auth-menu {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-align: right;
+    background: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-menu p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.auth-menu a {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.auth-menu a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Стили для товаров */
+.shoe-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.shoe-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.shoe-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.shoe-item h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.shoe-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+.shoe-item .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.shoe-item .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для секции главной страницы */
+.home_section {
+    margin-top: 30px;
+}
+
+.home_section .home_title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.home_section .home_description {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+    text-align: center;
+}
+</style>
+
+<div class="navbar-nav">
+    <a class="nav-item nav-link" href="{% url 'home' %}">Пулло</a>
+    <a class="nav-item nav-link" href="{% url 'shoes' %}">Кроссовки</a>
+    <a class="nav-item nav-link" href="#">Пока ничего нет</a>
+    <a class="nav-item nav-link" href="#">Пока ничего нет</a>
+    <a class="nav-item nav-link" href="#">Пока ничего нет</a>
+    <a class="nav-item nav-link last" href="#"><img src="{% static 'images/airmax123.jpeg' %}" alt="airmax123"></a>
+</div>
+
+<div class="auth-menu">
+    {% if user.is_authenticated %}
+        <p>Добро пожаловать, <strong>{{ user.username }}</strong>!</p>
+        <a href="{% url 'logout' %}" class="auth-link">Выход</a>
+    {% else %}
+        <p>Привет, гость!</p>
+        <a href="{% url 'login' %}" class="auth-link">Войти</a>
+    {% endif %}
+</div>
+
+
+<div class="brands-section">
+    <h2>Наши бренды</h2>
+    <div class="brands-list">
+        {% for brand in brands %}
+            <div class="brand">
+                <p>{{ brand.name }}</p> <!-- Выводим только название бренда -->
+            </div>
+        {% empty %}
+            <p>Бренды не найдены.</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+<div class="home_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="home_title">Добро пожаловать в Pullshoes</h1>
+                <p class="home_description">Найдите идеальную пару обуви для любого случая!</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for shoe in shoes %}
+                <div class="col-md-4">
+                    <div class="shoe-item">
+                        <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" class="shoe-image">
+                        <h3 class="shoe-name">{{ shoe.name }}</h3>
+                        <p class="shoe-price">{{ shoe.price }} ₽</p>
+                        
+                        <div class="sizes">
+                            {% for availability in shoe.shoesizeavailability_set.all %}
+                                <p><strong>Размер {{ availability.size.size }}:</strong> {{ availability.quantity }} шт.</p>
+                            {% endfor %}
+                        </div>
+        
+                        <a href="{% url 'shoe_detail' shoe.id %}" class="btn btn-info">Подробнее</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

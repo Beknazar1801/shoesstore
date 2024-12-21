@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile_section">
+    <h2>Ваш профиль</h2>
+    <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+    <p><strong>Телефон:</strong> {{ user_profile.phone_number }}</p>
+    <p><strong>Адрес:</strong> {{ user_profile.address }}</p>
+    <p><strong>Фото профиля:</strong></p>
+    {% if user_profile.profile_picture %}
+    <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" width="150" />
+    {% else %}
+    <p>Фото не установлено</p>
+    {% endif %}
+</div>
+{% endblock %}
