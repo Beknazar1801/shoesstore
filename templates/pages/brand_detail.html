@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shoe_detail2.css' %}">
+</head>
+{% include 'pages/includes/filter_and_brands.html' %}
+
+    <h1>Обувь бренда {{ brend.name }}</h1>
+    <div class="shoe-list">
+        {% for shoe in shoes %}
+            <div class="shoe-item">
+                <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}">
+                <h3>{{ shoe.name }}</h3>
+                <p>{{ shoe.price }} ₽</p>
+                <a href="{% url 'shoe_detail' shoe.id %}" class="btn">Подробнее</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

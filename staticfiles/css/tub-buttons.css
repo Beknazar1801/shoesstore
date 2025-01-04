@@ -1,0 +1,565 @@
+/* tub-buttons.css */
+
+/* Общий стиль для разделов */
+.category-tabs {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.category-tabs h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Стили для кнопок категорий */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tab-buttons a {
+    padding: 10px 20px;
+    border: 2px solid #f12a47; /* Красный контур */
+    border-radius: 5px;
+    color: #f12a47; /* Красный цвет текста */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab-buttons a:hover {
+    background-color: #f12a47; /* Заливка красным цветом при наведении */
+    color: white; /* Белый цвет текста при наведении */
+}
+
+/* Стили для раздела с обувью */
+.layout_padding {
+    padding: 40px 0;
+}
+
+.collection_section h1.new_text {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.consectetur_text {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.collection_section_2 .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-img, .about-img2 {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.about-img:hover, .about-img2:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.shoes-img img, .shoes-img2 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.sport_text {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.dolar_text {
+    color: #f12a47;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Кнопки */
+.new_bt, .seemore_bt a {
+    padding: 8px 16px;
+    background-color: #f12a47;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.new_bt:hover, .seemore_bt a:hover {
+    background-color: #c11e38;
+}
+
+/* Сетка для обуви */
+.shoes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.shoe-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: transform 0.2s ease-in-out;
+}
+
+.shoe-item:hover {
+    transform: scale(1.05);
+}
+
+.shoe-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.category-tabs, .tab-buttons a {
+    position: relative;
+    z-index: 10;  /* Убедитесь, что ссылки находятся сверху */
+}
+
+
+/* Звездный рейтинг */
+.rating {
+    display: flex;
+    direction: row-reverse;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.rating input:checked ~ label {
+    color: #f39c12;
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #f39c12;
+}
+
+/* Стили для текстового отзыва */
+textarea.form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+textarea.form-control:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+}
+
+/* Кнопка отправки отзыва */
+button.btn-primary {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.btn-primary:hover {
+    background-color: #e67e22;
+}
+
+/* Раздел отзывов */
+.review {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.review p {
+    font-size: 1rem;
+}
+
+.review em {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+
+.review {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-header strong {
+    font-size: 1.1em;
+}
+
+.review-rating {
+    color: #FFD700;
+}
+
+.review-rating i {
+    font-size: 1.2em;
+}
+
+.review-date {
+    color: #777;
+    font-size: 0.9em;
+}
+
+.review-body {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #333;
+}
+
+.review-body p {
+    margin: 0;
+}
+
+/* Основной стиль для формы */
+.purchase-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* Стили для элементов формы */
+.purchase-form .form-group {
+    margin-bottom: 20px;
+}
+
+.purchase-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.purchase-form input[type="number"],
+.purchase-form input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.purchase-form input[type="number"]:focus,
+.purchase-form input[type="text"]:focus {
+    border-color: #f12a47;
+    outline: none;
+}
+
+/* Кнопка отправки */
+.purchase-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #f12a47;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-form button:hover {
+    background-color: #d01f38;
+}
+
+/* Маленькие отступы */
+.purchase-form input[type="number"], 
+.purchase-form input[type="text"] {
+    margin-bottom: 12px;
+}
+
+/* Общий стиль для форм */
+.form-style {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Сделаем форму шире */
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+/* Кнопки */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #f12a47;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #d01f38;
+}
+
+/* Заголовки */
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Поля ввода */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #f12a47;
+    outline: none;
+}
+
+/* Звезды рейтинга */
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Изображения товара */
+.shoe-image {
+    width: 60%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Отзывы */
+.review {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.review-header {
+    margin-bottom: 10px;
+}
+
+.review-body {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Общий стиль для форм */
+.form-style {
+    background-color: #f9f9f9;
+    padding: 10px; /* Уменьшенный отступ */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 700px; /* Увеличенная ширина формы */
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+/* Кнопки */
+button[type="submit"] {
+    width: 100%;
+    padding: 8px; /* Уменьшенная высота кнопки */
+    background-color: #f12a47;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px; /* Меньше размер текста */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #d01f38;
+}
+
+/* Заголовки */
+h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Поля ввода */
+.form-group {
+    margin-bottom: 10px; /* Уменьшенные отступы между группами */
+}
+
+.form-group label {
+    font-size: 13px; /* Меньше размер текста */
+    color: #333;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px; /* Уменьшенная высота полей */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px; /* Меньше размер текста */
+    color: #333;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #f12a47;
+    outline: none;
+}
+
+/* Звезды рейтинга */
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Изображение товара */
+.shoe-image {
+    width: 50%; /* Уменьшенная ширина */
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Отзывы */
+.review {
+    margin-bottom: 15px;
+    padding: 10px; /* Компактный отступ */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.review-header {
+    margin-bottom: 8px;
+}
+
+.review-body {
+    font-size: 13px;
+    color: #666;
+}
+
+
+body{background: #000}.card{border: none;height: 320px}.forms-inputs{position: relative}.forms-inputs span{position: absolute;top:-18px;left: 10px;background-color: #fff;padding: 5px 10px;font-size: 15px}.forms-inputs input{height: 50px;border: 2px solid #eee}.forms-inputs input:focus{box-shadow: none;outline: none;border: 2px solid #000}.btn{height: 50px}.success-data{display: flex;flex-direction: column}.bxs-badge-check{font-size: 90px}
+
+
+.user-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.user-info p {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.default-avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #888;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -4,7 +4,10 @@
 
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/shoe_detail.css' %}"> <!-- Подключаем файл стилей -->
+<head>
+   <link rel="stylesheet" href="{% static 'css/shoe_detail3.css' %}"> <!-- Подключаем файл стилей -->
+</head>
+    {% include 'pages/includes/filter_and_brands.html' %}
 
     <div class="shoe-detail clearfix">
         <h2>{{ shoe.name }}</h2>

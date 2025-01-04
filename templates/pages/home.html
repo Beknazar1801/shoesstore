@@ -3,111 +3,13 @@
 
 {% block content %}
 
-<style>
-/* Стили для меню авторизации */
-.auth-menu {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    text-align: right;
-    background: #f8f9fa;
-    padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shoe_detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search1.css' %}">
+</head>
 
-.auth-menu p {
-    margin: 0;
-    font-size: 14px;
-    color: #333;
-}
 
-.auth-menu a {
-    display: inline-block;
-    margin-top: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #007bff;
-    text-decoration: none;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.auth-menu a:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-/* Стили для товаров */
-.shoe-item {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.shoe-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.shoe-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.shoe-item h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.shoe-item p {
-    font-size: 16px;
-    color: #555;
-}
-
-.shoe-item .btn {
-    padding: 8px 12px;
-    font-size: 14px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-.shoe-item .btn:hover {
-    background-color: #0056b3;
-}
-
-/* Стили для секции главной страницы */
-.home_section {
-    margin-top: 30px;
-}
-
-.home_section .home_title {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.home_section .home_description {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 40px;
-    text-align: center;
-}
-</style>
 
 <div class="navbar-nav">
     <a class="nav-item nav-link" href="{% url 'home' %}">Пулло</a>
@@ -118,29 +20,53 @@
     <a class="nav-item nav-link last" href="#"><img src="{% static 'images/airmax123.jpeg' %}" alt="airmax123"></a>
 </div>
 
+<form method="get" action="{% url 'shoe_search' %}" class="search-form">
+    <input type="text" name="q" placeholder="Введите название или бренд обуви" class="search-input">
+    <button type="submit" class="search-button">Искать</button>
+</form>
+
+
 <div class="auth-menu">
     {% if user.is_authenticated %}
         <p>Добро пожаловать, <strong>{{ user.username }}</strong>!</p>
-        <a href="{% url 'logout' %}" class="auth-link">Выход</a>
+        <div class="auth-links">
+            <a href="{% url 'profile' %}" class="auth-link">Профиль</a>
+            <a href="{% url 'logout' %}" class="auth-link">Выход</a>
+        </div>
     {% else %}
         <p>Привет, гость!</p>
         <a href="{% url 'login' %}" class="auth-link">Войти</a>
     {% endif %}
 </div>
 
+<div class="filter-links">
+    <a href="{% url 'mens' %}">Мужская</a> |
+    <a href="{% url 'womens' %}">Женская</a>
+</div>
 
-<div class="brands-section">
-    <h2>Наши бренды</h2>
-    <div class="brands-list">
-        {% for brand in brands %}
-            <div class="brand">
-                <p>{{ brand.name }}</p> <!-- Выводим только название бренда -->
-            </div>
-        {% empty %}
-            <p>Бренды не найдены.</p>
-        {% endfor %}
+
+
+
+
+
+<div class="home_section">
+    <div class="container">
+        <div class="brand-list">
+            {% if brends %}
+                {% for brend in brends %}
+                    <div class="brand-item">
+                        <a href="{% url 'brand_detail' brend.id %}">
+                            <h4 class="brand-name">{{ brend.name }}</h4>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Бренды не найдены</p>
+            {% endif %}
+        </div>
     </div>
 </div>
+
 
 
 

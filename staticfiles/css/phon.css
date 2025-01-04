@@ -1,0 +1,62 @@
+/* Стили для контейнера, окружающего форму */
+.login-container {
+    background-color: #f0f0f0; /* Цвет фона */
+    padding: 30px; /* Отступы вокруг формы */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для выделения */
+    margin: 50px auto; /* Центрирование контейнера */
+    max-width: 500px; /* Максимальная ширина контейнера */
+}
+
+/* Стили для самой формы */
+.login-form {
+    background-color: #fff; /* Белый фон для формы */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form .form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.login-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #03080e;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #000509;
+}
+
+.login-form .register-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.login-form .register-link:hover {
+    color: #ff6347;
+}

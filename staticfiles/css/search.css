@@ -1,0 +1,24 @@
+.shoe-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.shoe-item {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+}
+
+.shoe-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.shoe-details {
+    margin-top: 10px;
+    font-size: 14px;
+}

@@ -15,7 +15,7 @@ class Gender(models.Model):
 
 class ShoeGenderAvailability(models.Model):
     shoe = models.ForeignKey('Shoes', on_delete=models.CASCADE, related_name='gender_availabilities')
-    gender = models.ForeignKey('Gender', on_delete=models.CASCADE)  # Связь с полом
+    gender = models.ForeignKey('Gender', on_delete=models.CASCADE)  
     quantity = models.PositiveIntegerField(verbose_name="Доступное количество")
 
     def __str__(self):
@@ -54,6 +54,7 @@ class Shoes(models.Model):
     brend = models.ForeignKey('Brend', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Бренд')
     created_at = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Дата создания')
     sizes = models.ManyToManyField(ShoeSize, related_name="shoes")
+    gender = models.ForeignKey('ShoeGenderAvailability', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Пол')
     
 
     class Meta:

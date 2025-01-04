@@ -28,12 +28,12 @@ def create_order(request, pk):
         
         if not availability:
             messages.error(request, "Данный размер или пол недоступен для этой обуви.")
-            return redirect('shoe_detail', shoe_id=shoe.id)
+            return redirect('shoe_detail', pk=shoe.id)
 
         
         if quantity > availability.quantity:
             messages.error(request, "Недостаточно товара на складе.")
-            return redirect('shoe_detail', shoe_id=shoe.id)
+            return redirect('shoe_detail', pk=shoe.id)
 
         
         order = Order.objects.create(

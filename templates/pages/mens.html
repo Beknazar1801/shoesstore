@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/mw.css' %}">
+</head>
+<h1>Мужская обувь</h1>
+
+{% include 'pages/includes/filter_and_brands.html' %}
+
+<div class="shoe-list">
+    {% for availability in male_availabilities %}
+        <div class="shoe-item">
+            <a href="{% url 'shoe_detail' pk=availability.shoe.pk %}">
+                {% if availability.shoe.image %}
+                    <img src="{{ availability.shoe.image.url }}" alt="{{ availability.shoe.name }}" class="shoe-image">
+                {% else %}
+                    <p>Изображение не доступно</p>
+                {% endif %}
+            </a>
+            <div class="shoe-details">
+                <strong>{{ availability.shoe.name }}</strong><br>
+                {% if availability.shoe.brend %}
+                    {{ availability.shoe.brend.name }}
+                {% else %}
+                    Не указан
+                {% endif %}
+            </div>
+
+            <div class="shoe-sizes">
+                {% for shoe_data in shoes_with_sizes %}
+                    {% if shoe_data.shoe == availability.shoe %}
+                        {% for size_availability in shoe_data.sizes %}
+                            <a href="{% url 'shoe_detail' pk=availability.shoe.pk %}" class="size-link">
+                                {{ size_availability.size.size }}
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

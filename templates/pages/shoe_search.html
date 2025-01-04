@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+</head>
+
+{% include 'pages/includes/filter_and_brands.html' %}
+
+<h1>Результаты поиска</h1>
+
+<p>Вы искали: "{{ query }}"</p>
+
+{% if results %}
+    <div class="shoe-list">
+        {% for shoe in results %}
+            <div class="shoe-item">
+                <a href="{% url 'shoe_detail' pk=shoe.pk %}">
+                    {% if shoe.image %}
+                        <img src="{{ shoe.image.url }}" alt="{{ shoe.name }}" class="shoe-image">
+                    {% else %}
+                        <p>Изображение не доступно</p>
+                    {% endif %}
+                </a>
+                <div class="shoe-details">
+                    <strong>{{ shoe.name }}</strong><br>
+                    {% if shoe.brend %}
+                        {{ shoe.brend.name }}
+                    {% else %}
+                        Бренд не указан
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Ничего не найдено</p>
+{% endif %}
+{% endblock %}

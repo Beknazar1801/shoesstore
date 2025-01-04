@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Мужская обувь</h1>
+<ul>
+    {% for availability in male_availabilities %}
+        <li>
+            <strong>{{ availability.shoe.name }}</strong><br>
+            {% if availability.shoe.image %}
+                <img src="{{ availability.shoe.image.url }}" alt="{{ availability.shoe.name }}" style="max-width: 200px;"><br>
+            {% else %}
+                <p>Изображение не доступно</p>
+            {% endif %}
+            Бренд: 
+            {% if availability.shoe.brend %}
+                {{ availability.shoe.brend.name }}
+            {% else %}
+                Не указан
+            {% endif %}<br>
+            Цвет: {{ availability.shoe.color }}<br>
+            Описание: {{ availability.shoe.description }}<br>
+            Количество: {{ availability.quantity }} шт.
+        </li>
+    {% endfor %}
+</ul>
+
+<h1>Женская обувь</h1>
+<ul>
+    {% for availability in female_availabilities %}
+        <li>
+            <strong>{{ availability.shoe.name }}</strong><br>
+            {% if availability.shoe.image %}
+                <img src="{{ availability.shoe.image.url }}" alt="{{ availability.shoe.name }}" style="max-width: 200px;"><br>
+            {% else %}
+                <p>Изображение не доступно</p>
+            {% endif %}
+            Бренд: 
+            {% if availability.shoe.brend %}
+                {{ availability.shoe.brend.name }}
+            {% else %}
+                Не указан
+            {% endif %}<br>
+            Цвет: {{ availability.shoe.color }}<br>
+            Описание: {{ availability.shoe.description }}<br>
+            Количество: {{ availability.quantity }} шт.
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

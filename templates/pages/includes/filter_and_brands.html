@@ -1,0 +1,34 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shoe_detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/search1.css' %}">
+</head>
+
+<form method="get" action="{% url 'shoe_search' %}" class="search-form">
+    <input type="text" name="q" placeholder="Введите название или бренд обуви" class="search-input">
+    <button type="submit" class="search-button">Искать</button>
+</form>
+
+<div class="filter-links">
+    <a href="{% url 'mens' %}">Мужская</a> |
+    <a href="{% url 'womens' %}">Женская</a>
+</div>
+
+<div class="home_section">
+    <div class="container">
+        <div class="brand-list">
+            {% if brends %}
+                {% for brend in brends %}
+                    <div class="brand-item">
+                        <a href="{% url 'brand_detail' brend.id %}">
+                            <h4 class="brand-name">{{ brend.name }}</h4>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Бренды не найдены</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

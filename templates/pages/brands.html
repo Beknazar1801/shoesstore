@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/brand.css' %}">
+    <h1>Бренды</h1>
+    {% if brends %}
+        <ul>
+            {% for brend in brends %}
+                <li>{{ brend.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Бренды не найдены</p>
+    {% endif %}
+{% endblock %}
